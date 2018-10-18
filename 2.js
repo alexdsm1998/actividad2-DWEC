@@ -1,9 +1,4 @@
-/**
- * Ejercicio: Concesionario
- * Dar de alta coche
- * Dar de baja coche
- * Buscar un coche y mostrarlo por pantalla
- */
+
 
 const readline = require('readline-sync');
 
@@ -62,7 +57,7 @@ while(!salir){
         let numpaginas=readline.question('Introduce un modelo: ');
         let anyo=readline.question('Introduce un color: ');
         let menciones = readline.questionFloat('Introduce el num. de km: ');
-        
+
         console.log('1)Dar de alta articulo de revista');
         console.log('2)Dar de alta articulo de conferencia');
         let opcion=readline.questionInt('Por favor, seleccione una de estas opciones: ');
@@ -80,13 +75,10 @@ while(!salir){
             lista.push(newconferencia);
             console.log(conferencia);
         }
-        console.log('1)Dar de alta articulo de revista');
-        console.log('2)Dar de alta articulo de conferencia');
-        let opcion=readline.questionInt('Por favor, seleccione una de estas opciones: ');
     } else if(opcion===2){
         //Dar de baja un articulo
-        console.log('1)Dar de alta articulo de revista');
-        console.log('2)Dar de alta articulo de conferencia');
+        console.log('1)Dar de baja articulo de revista');
+        console.log('2)Dar de baja   9 articulo de conferencia');
         let opcion=readline.questionInt('Por favor, seleccione una de estas opciones: ');
         if(opcion===1) {
         let titulo = readline.question('Por favor introduce un titulo:');
@@ -100,14 +92,14 @@ while(!salir){
             }
         }
         if(encontrado){
-            console.log('Coche encontrado y borrado del sistema');+
+            console.log('articulo encontrado y borrado del sistema');+
             console.log(listaCoches);
         } else {
-            console.log('Coche no encontrado en el sistema');
+            console.log('articuloe no encontrado en el sistema');
         }
         }else if{opcion === 2){
              //Dar de baja una conferencia
-        let titulo = readline.question('Por favor introduce una matricula:');
+        let titulo = readline.question('Por favor introduce un titulo:');
         let encontrado = false;
         for(let i=0;i<lista.length;i++){
             let coche = lista[i];
@@ -120,45 +112,41 @@ while(!salir){
     }
 
         if(encontrado){
-            console.log('Coche encontrado y borrado del sistema');+
+            console.log('articulo encontrado y borrado del sistema');+
             console.log(lista);
         } else {
-            console.log('Coche no encontrado en el sistema');
+            console.log('articulo no encontrado en el sistema');
         }
     }
     } else if(opcion===3){
-        //Buscar un coche
-        let matricula = readline.question('Por favor introduce una matricula: ');
-        for(let coche of listaCoches){
-            if(coche.matricula===matricula){
-                console.log(coche);
+        //Buscar un articulo
+        let titulo = readline.question('Por favor introduce un titulo: ');
+        for(let articulocientifico of lista){
+            if(articulocientifico.titulo===titulo){
+                console.log(articulocientifico);
                 break;
             }
         }
-        /**
-         * let arrayCoche = listaCoches.filter( c => c.matricula===matricula );
-         * console.log(arrayCoche[0]);
-         */
+
     } else if(opcion===4){
         //ModificaciÃ³n
-        let matricula = readline.question('Por favor introduzca una matricula: ');
-        let cocheEncontrado = undefined;
-        //for(let coche of listaCoches){
-        for(let i=0;i<listaCoches.length;i++){
-            let coche = listaCoches[i];
-            if(coche.matricula === matricula){
-                cocheEncontrado = coche;
+        let matricula = readline.question('Por favor introduzca un titulo: ');
+        let articulo_encontrado = undefined;
+        for(let i=0;i<lista.length;i++){
+            let articulocientifico = lista[i];
+            if(articulocientifico.titulo === titulo){
+                articulo_encontrado = articulocientifico;
                 break;
             }
         }
-        if(cocheEncontrado){
-            //Coche encontrado
-            let newKm = readline.questionInt('Introduce nuevo numero de km (Actual: ' + cocheEncontrado.km + ' )');
+        if(articulo_encontrado){
+            //articulo encontrado
+            let newtitulo = readline.questionInt('Introduce el nuevo titulo (Actual: ' + articulo_encontrado.titulo + ' )');
             cocheEncontrado.km = newKm;
             console.log('Valor modificado');
         } else {
             //Coche no ha sido encontrado
-            console.log('Coche no encontrado');
+            console.log('articulo encontrado');
         }
     } else if(opcion===-1){
         salir=true;
